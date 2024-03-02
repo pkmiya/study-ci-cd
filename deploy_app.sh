@@ -21,6 +21,9 @@ fi
 
 echo "Deploying Hello World to Docker Container"
 
+# Docker Login (ensure DOCKER_USERNAME and DOCKER_PASSWORD are set as environment variables)
+echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+
 #Check for running container & stop it before starting a new one
 if [ $(docker inspect -f '{{.State.Running}}' $CONAINER_NAME) = "true" ]; then
     docker stop hello_world
