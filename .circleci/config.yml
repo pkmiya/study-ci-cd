@@ -28,7 +28,7 @@ jobs:
             . helloworld/bin/activate
             pyinstaller -F hello_world.py
             docker build -t ariv3ra/$IMAGE_NAME:$TAG .
-            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+            echo $DOCKER_PASSWORD	 | docker login -u $DOCKER_USERNAME --password-stdin
             docker push ariv3ra/$IMAGE_NAME:$TAG
       - run:
           name: アプリを Docker 経由で Digital Ocean サーバーにデプロイ
